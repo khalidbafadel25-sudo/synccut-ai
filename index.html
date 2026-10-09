@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SyncCut AI — مونتاجك بذكاء</title><meta name="theme-color" content="#101119"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+ <a class="brand" href="#"><span class="logo">✦</span><span>SyncCut <b>AI</b><small>مونتاجك بذكاء</small></span></a>
+ <div class="top-actions"><span class="status"><i></i> مساحة العمل جاهزة</span><button class="btn ghost" id="serverOpen">ربط الخادم</button><button class="btn ghost" id="adminOpen">لوحة المالك</button><button class="btn primary" id="exportBtn">تصدير الفيديو ↗</button></div>
+</header>
+<main>
+ <section class="welcome"><div><div class="eyebrow">استوديو المونتاج الذكي</div><h1>فكرتك. لقطاتك. <span>فيديو جاهز.</span></h1><p>ارفع مقاطعك وابدأ المونتاج، ثم راجع النتيجة وطوّرها.</p></div><button class="btn primary big" id="autoBtn">✦ مونتاج تلقائي بنقرة</button></section>
+ <section class="workspace">
+  <aside class="tools panel"><div class="section-head"><h2>أدوات الاستوديو</h2><span class="tiny">AI TOOLS</span></div>
+   <button class="tool active" data-tool="auto"><span class="tool-icon purple">✦</span><span><b>المونتاج التلقائي</b><small>تجميع المقاطع وإخراج فيديو</small></span><span class="arrow">‹</span></button>
+   <button class="tool" data-tool="scenes"><span class="tool-icon blue">▦</span><span><b>تقسيم المشاهد</b><small>اكتشاف تغيّر اللقطات</small></span><span class="arrow">‹</span></button>
+   <button class="tool" data-tool="silence"><span class="tool-icon orange">◖</span><span><b>كشف الصمت</b><small>تحديد فترات السكون</small></span><span class="arrow">‹</span></button>
+   <button class="tool" data-tool="voice"><span class="tool-icon green">〽</span><span><b>تنقية الصوت</b><small>مرحلة تطوير لاحقة</small></span><span class="arrow">‹</span></button>
+   <button class="tool" data-tool="lipsync"><span class="tool-icon pink">◉</span><span><b>مزامنة الشفاه</b><small>تحتاج نموذج ذكاء اصطناعي</small></span><span class="arrow">‹</span></button>
+   <div class="side-note"><span>✧</span><div><b>مساحة إبداعك</b><p>ابدأ بالمونتاج التلقائي، ثم حسّن النتيجة خطوة بخطوة.</p></div></div>
+  </aside>
+  <section class="editor panel">
+   <div class="editor-head"><div><b id="projectTitle">مشروع جديد</b><span class="tag">مسودة</span><small id="projectMeta">لا توجد مقاطع بعد</small></div><div class="mini-actions"><button class="icon-btn" id="resetBtn" title="إعادة تعيين">↺</button><button class="icon-btn" id="fullscreenBtn" title="ملء الشاشة">⛶</button></div></div>
+   <div class="preview" id="previewArea"><video id="preview" controls playsinline></video><div class="empty-preview" id="emptyPreview"><div class="play-symbol">▶</div><h3>مشهدك الأول يبدأ هنا</h3><p>ارفع فيديو أو أكثر للبدء</p><button class="btn secondary" id="chooseBtn">＋ إضافة مقاطع</button></div><div class="preview-label">معاينة المشروع <span>16:9</span></div></div>
+   <div class="transport"><span id="timecode">00:00 / 00:00</span><div class="transport-buttons"><button id="prevBtn">|◀</button><button id="playBtn" class="play">▶</button><button id="nextBtn">▶|</button></div><span class="quality">1080p · 30 FPS</span></div>
+   <div class="timeline-head"><b>الخط الزمني</b><span id="clipCount">0 مقاطع</span><div class="timeline-actions"><button id="zoomOut">−</button><button id="zoomIn">＋</button></div></div>
+   <div class="timeline"><div class="track-label">VIDEO <small>01</small></div><div class="track-content" id="videoTrack"><div class="track-empty">أضف مقاطع الفيديو هنا</div></div><div class="track-label">AUDIO <small>02</small></div><div class="track-content audio-track" id="audioTrack"><div class="track-empty">أضف موسيقى أو صوتًا</div></div><div class="track-label">TEXT <small>03</small></div><div class="track-content text-track"><div class="track-empty">مسار النصوص — قريبًا</div></div></div>
+   <div class="upload-strip"><div class="upload-icon">↑</div><div><b>أضف ملفاتك إلى المشروع</b><p>MP4، MOV، WEBM، MP3، WAV</p></div><button class="btn secondary" id="uploadBtn">اختيار الملفات</button><input id="fileInput" type="file" accept="video/*,audio/*" multiple hidden></div>
+  </section>
+  <aside class="inspector panel"><div class="section-head"><h2>خصائص المشروع</h2><span class="sliders">☷</span></div>
+   <label class="field-label" for="projectName">اسم المشروع</label><input class="text-input" id="projectName" value="مشروعي الجديد">
+   <label class="field-label">نسبة الأبعاد</label><div class="ratio-options"><button class="ratio selected" data-ratio="16:9">▰<small>16:9</small></button><button class="ratio" data-ratio="9:16">▯<small>9:16</small></button><button class="ratio" data-ratio="1:1">□<small>1:1</small></button></div>
+   <div class="divider"></div><div class="section-head"><h3>تحسين المعاينة</h3><span class="tiny">COLOR</span></div>
+   <div class="slider-field"><div><label for="brightness">السطوع</label><output id="brightnessVal">100%</output></div><input id="brightness" type="range" min="50" max="150" value="100"></div>
+   <div class="slider-field"><div><label for="contrast">التباين</label><output id="contrastVal">100%</output></div><input id="contrast" type="range" min="50" max="150" value="100"></div>
+   <div class="slider-field"><div><label for="saturation">التشبّع</label><output id="saturationVal">100%</output></div><input id="saturation" type="range" min="0" max="200" value="100"></div>
+   <div class="divider"></div><div class="section-head"><h3>إعدادات الصوت</h3><span class="tiny">AUDIO</span></div>
+   <div class="slider-field"><div><label for="musicVolume">مستوى الموسيقى</label><output id="musicVal">18%</output></div><input id="musicVolume" type="range" min="0" max="100" value="18"></div>
+   <label class="check-row"><input type="checkbox" id="beatSync" checked><span>تفضيل إيقاع الموسيقى (تجريبي)</span></label><p class="hint">تعديلات الألوان هنا للمعاينة فقط؛ تصديرها ضمن الفيديو يحتاج مرحلة معالجة إضافية.</p>
+  </aside>
+ </section>
+ <div id="message" class="message" role="status"></div>
+ <div class="phone-note"><b>نسخة الجوال</b> — اختر المقاطع من الاستديو لمعاينتها مباشرة. لتصدير MP4 وأدوات التحليل، اربط خادمًا منشورًا على الإنترنت من زر «ربط الخادم».</div>
+ <footer>SyncCut AI <span>•</span> تطوير خالد بافضل <span>•</span> نسخة أولية قابلة للتطوير</footer>
+</main>
+<div class="modal-backdrop" id="serverModal" hidden><section class="modal panel"><button class="close" id="serverClose">×</button><div class="modal-logo">☁</div><h2>ربط خادم المونتاج</h2><p>ضع رابط خادم SyncCut AI المنشور على الإنترنت. مثال: https://your-api.example.com</p><form id="serverForm"><label class="field-label" for="serverUrl">رابط الخادم</label><input class="text-input" id="serverUrl" type="url" inputmode="url" placeholder="https://..." required><button class="btn primary block">حفظ وتجربة الاتصال</button></form><button class="btn secondary block" id="clearServer">مسح الرابط المحفوظ</button><small class="hint">لن يعمل التصدير على الجوال بمجرد فتح الملفات محليًا؛ يجب نشر الخادم أولًا وتفعيل HTTPS وCORS.</small></section></div>
+<div class="modal-backdrop" id="adminModal" hidden><section class="modal panel"><button class="close" id="adminClose">×</button><div class="modal-logo">✦</div><h2>لوحة المالك</h2><p>مساحة خاصة بإدارة SyncCut AI</p><form id="adminForm"><label class="field-label" for="pin">رمز PIN</label><input class="text-input" id="pin" type="password" inputmode="numeric" placeholder="أدخل رمز الدخول" required><button class="btn primary block">دخول</button></form><div id="adminStats" class="stats" hidden></div><small class="hint">الرمز الافتراضي 1234 للتجربة المحلية فقط. غيّره قبل النشر.</small></section></div>
+<script src="app.js"></script>
+</body></html>
